@@ -6,12 +6,17 @@ import { FAQ } from '@/components/faq'
 import { ContactForm } from '@/components/contact-form'
 import { Footer } from '@/components/footer'
 import { AboutUs } from '@/components/about_us'
-export default function Home() {
+import { createClient } from '@/utils/supabase/client'
+
+export default async function Home() {
+   const supabase = await createClient()
+   const { data: carouselItems } = await supabase.from('carousel').select()
+   console.log(carouselItems)
    return (
       <div className="flex flex-col min-h-[100dvh]">
          <Navigation />
          <main className="flex-1">
-            <Carousel />
+            {carouselItems && <Carousel items={carouselItems} />}
             <AboutUs />
             <Features />
             <Testimonials />
