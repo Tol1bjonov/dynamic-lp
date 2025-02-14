@@ -5,8 +5,21 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { FadeIn } from '../components/fade-in'
+import Link from 'next/link'
 
-export function Carousel() {
+type CarouselItem = {
+   id: number
+   created_at: string
+   title: string
+   description: string
+   text: string
+   cta_link: string
+}
+type CarouselProps = {
+   items: CarouselItem[]
+}
+
+export function Carousel({ items }: CarouselProps) {
    const [emblaRef, emblaApi] = useEmblaCarousel()
 
    const scrollPrev = React.useCallback(() => {
@@ -22,22 +35,25 @@ export function Carousel() {
          <div className="relative">
             <div className="overflow-hidden" ref={emblaRef}>
                <div className="flex">
-                  {[1, 2, 3].map((index) => (
+                  {items.map((item) => (
                      <div
-                        key={index}
+                        key={item.id}
                         className="relative flex-[0_0_100%] min-w-0"
                      >
                         <div className="relative h-[500px] w-full bg-muted">
                            <div className="absolute inset-0 flex items-center justify-center">
                               <div className="text-center space-y-4">
                                  <h1 className="text-4xl font-bold tracking-tighter">
-                                    Transform Your Learning Journey
+                                    {item.title}
                                  </h1>
                                  <p className="mx-auto max-w-[700px] text-muted-foreground">
-                                    Discover our comprehensive offline learning
-                                    programs
+                                    {item.description}
                                  </p>
-                                 <Button size="lg">Explore Programs</Button>
+                                 <Link href={item.cta_link}>
+                                    <Button className="mt-4" size="lg">
+                                       {item.text}
+                                    </Button>
+                                 </Link>
                               </div>
                            </div>
                         </div>
