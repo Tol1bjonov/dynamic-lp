@@ -1,43 +1,27 @@
-'use client'
-
 import { AppSidebar } from '@/components/app-sidebar'
-import {
-   Breadcrumb,
-   BreadcrumbItem,
-   BreadcrumbLink,
-   BreadcrumbList,
-   BreadcrumbPage,
-   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+
 import { Separator } from '@/components/ui/separator'
 import {
    SidebarInset,
    SidebarProvider,
    SidebarTrigger,
 } from '@/components/ui/sidebar'
-import { usePathname } from 'next/navigation'
 import React from 'react'
+import Breadcrumbs from '@/components/breadcrumbs'
+import { createClient } from '@/utils/supabase/server'
+import { redirect } from 'next/navigation'
 
 type LayoutProps = {
    children: React.ReactNode
 }
 
-export default function Layout({ children }: LayoutProps) {
-   const pathname = usePathname()
+export default async function Layout({ children }: LayoutProps) {
+   const supabase = await createClient()
 
-   const breadcrumbs = pathname
-      .split('/')
-      .filter(Boolean)
-      .map((segment) => ({
-         href: `/${pathname
-            .split('/')
-            .slice(1, pathname.split('/').indexOf(segment) + 1)
-            .join('/')}`,
-         label: segment
-            .split('-')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' '),
-      }))
+   const { data, error } = await supabase.auth.getUser()
+   if (!data || error) {
+      redirect('/login')
+   }
    //bu joyda breadcrumblar dynamic qilingan, admin panelga utganda tepadan shu joygacha kelgan path kurinadi
    //masalan: dashboard va agar biz footer tanlasak footer paydo buladi, about tanlasak about buladi !!
    return (
@@ -48,28 +32,7 @@ export default function Layout({ children }: LayoutProps) {
                <div className="flex items-center gap-2 px-4">
                   <SidebarTrigger className="-ml-1" />
                   <Separator orientation="vertical" className="mr-2 h-4" />
-                  <Breadcrumb>
-                     <BreadcrumbList>
-                        {breadcrumbs.map((crumb, index) => (
-                           <React.Fragment key={crumb.href}>
-                              <BreadcrumbItem className="hidden md:block">
-                                 {index === breadcrumbs.length - 1 ? (
-                                    <BreadcrumbPage>
-                                       {crumb.label}
-                                    </BreadcrumbPage>
-                                 ) : (
-                                    <BreadcrumbLink href={crumb.href}>
-                                       {crumb.label}
-                                    </BreadcrumbLink>
-                                 )}
-                              </BreadcrumbItem>
-                              {index < breadcrumbs.length - 1 && (
-                                 <BreadcrumbSeparator className="hidden md:block" />
-                              )}
-                           </React.Fragment>
-                        ))}
-                     </BreadcrumbList>
-                  </Breadcrumb>
+                  <Breadcrumbs />
                </div>
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
