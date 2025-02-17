@@ -51,7 +51,7 @@ const data = {
             },
             {
                title: 'Hero',
-               url: '/dashboard/hero',
+               url: '/dashboard/carousel',
             },
             {
                title: 'About Us',
