@@ -54,7 +54,7 @@ export default function CarouselDataTable({ items }: CarouselDataTableProps) {
                </TableRow>
             </TableHeader>
             <TableBody>
-               {items && items?.length > 0 ? (
+               {items && items.length > 0 ? (
                   items?.map((item) => (
                      <TableRow key={item.id}>
                         <TableCell>{item.id}</TableCell>
@@ -75,7 +75,9 @@ export default function CarouselDataTable({ items }: CarouselDataTableProps) {
                         </TableCell>
                         <TableCell>
                            <div className="flex gap-2">
-                              <Link href={`dashboard/carousel/${item.id}`}>
+                              <Link
+                                 href={`/dashboard/carousel/${item.id}/edit`}
+                              >
                                  <Button variant="outline">
                                     <PencilIcon className="w-4 h-4" />
                                  </Button>
