@@ -14,12 +14,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
+import { Textarea } from '@/components/ui/textarea'
 
 const formSchema = z.object({
    title: z.string().min(2).max(100),
    description: z.string().min(30).max(300),
    text: z.string().min(2).max(50),
-   cta_link: z.string().min(2).max(50).url(),
+   cta_link: z.string().min(5).max(50).url(),
 })
 
 export type CarouselFormValues = z.infer<typeof formSchema>
@@ -67,7 +68,7 @@ export default function CarouselForm({
                   <FormItem>
                      <FormLabel>Description</FormLabel>
                      <FormControl>
-                        <Input placeholder="Description" {...field} />
+                        <Textarea placeholder="Description" {...field} />
                      </FormControl>
                      <FormDescription>
                         This is the description of the carousel item.

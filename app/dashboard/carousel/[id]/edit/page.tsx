@@ -16,7 +16,7 @@ export default async function CarouselEdit({ params }: CarouselEditProps) {
    return (
       <div>
          <h3 className="text-xl font-bold mb-4">Edit carousel item</h3>
-         <EditForm defaultValues={carouselItem} />
+         <EditForm carouselItem={carouselItem} />
       </div>
    )
 }

@@ -10,6 +10,7 @@ import { createClient } from '@/utils/supabase/client'
 
 export default async function Home() {
    const supabase = await createClient()
+   const { data: aboutUs } = await supabase.from('about_us').select().single()
    const { data: carouselItems } = await supabase.from('carousel').select()
    console.log(carouselItems)
    return (
@@ -17,7 +18,7 @@ export default async function Home() {
          <Navigation />
          <main className="flex-1">
             {carouselItems && <Carousel items={carouselItems} />}
-            <AboutUs />
+            <AboutUs aboutUs={aboutUs} />
             <Features />
             <Testimonials />
             <FAQ />
