@@ -3,7 +3,7 @@ import { Carousel } from '@/components/carousel'
 import { Features } from '@/components/featurest'
 import { Testimonials } from '@/components/testimonials'
 import { FAQ } from '@/components/faq'
-import { ContactForm } from '@/components/contact-form'
+import { Contact } from './contact'
 import { Footer } from '@/components/footer'
 import { AboutUs } from '@/components/about_us'
 import { createClient } from '@/utils/supabase/client'
@@ -22,7 +22,7 @@ export default async function Home() {
             <Features />
             <Testimonials />
             <FAQ />
-            <ContactForm />
+            <Contact />
          </main>
          <Footer />
       </div>

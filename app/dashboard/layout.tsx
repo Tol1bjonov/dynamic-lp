@@ -9,7 +9,6 @@ import {
 import React from 'react'
 import Breadcrumbs from '@/components/breadcrumbs'
 import { createClient } from '@/utils/supabase/server'
-import { Toaster } from '@/components/ui/toaster'
 
 type LayoutProps = {
    children: React.ReactNode
@@ -25,7 +24,6 @@ export default async function Layout({ children }: LayoutProps) {
    console.log(user)
    return (
       <SidebarProvider>
-         <Toaster />
          <AppSidebar email={user?.email} />
          <SidebarInset>
             <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
