@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learning Center Landing Page
+
+This project is a modern, responsive landing page for an offline learning center, built with Next.js, Tailwind CSS, and shadcn/ui components.
+
+## Features
+
+- Responsive design
+- Interactive carousel
+- Animated sections with Framer Motion
+- Contact form with validation
+- FAQ section with accordion
+- Mobile-friendly navigation
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
+- [Framer Motion](https://www.framer.com/motion/) - Animation library for React
+- [Embla Carousel](https://www.embla-carousel.com/) - Carousel component
+- [React Hook Form](https://react-hook-form.com/) - Form validation
+- [Zod](https://github.com/colinhacks/zod) - Schema validation
+- [Lucide React](https://lucide.dev/) - Icon set
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   \`\`\`bash
+   git clone https://github.com/Tol1bjonov/dynamic-lp.git
+   cd learning-center-landing-page
+   \`\`\`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customization
 
-## Learn More
+- Update the content in each component file to match your learning center's information.
+- Modify the styles in the Tailwind classes to adjust the design as needed.
+- Add or remove sections by editing the \`app/page.tsx\` file.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
+## Deployment
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
